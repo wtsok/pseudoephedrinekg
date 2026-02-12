@@ -1,0 +1,104 @@
+</html>
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SECURE TERMINAL</title>
+
+<style>
+body {
+  background: black;
+  color: #00ff00;
+  font-family: monospace;
+  padding: 15px;
+}
+#task {
+  display: none;
+  border: 1px solid #00ff00;
+  padding: 10px;
+  margin-top: 15px;
+}
+input, button {
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  margin-top: 10px;
+  background: black;
+  color: #00ff00;
+  border: 1px solid #00ff00;
+}
+button {
+  background: #00ff00;
+  color: black;
+}
+#msg, #answerMsg {
+  margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>🔒 SECURE TERMINAL</h2>
+<p>Введите ключ:</p>
+
+<input id="keyInput" placeholder="KEY">
+<button onclick="checkKey()">ENTER</button>
+
+<p id="msg"></p>
+
+<div id="task">
+<h3>🧩 ЗАДАНИЕ</h3>
+<pre>
+text = "Algorithm"
+result = ""
+
+for i in range(len(text)):
+    if i % 2 == 0:
+        result += text[i]
+
+print(result)
+</pre>
+
+<input id="answer" placeholder="Ответ">
+<button onclick="checkAnswer()">VERIFY</button>
+<p id="answerMsg"></p>
+</div>
+
+<script>
+function checkKey() {
+  let key = document.getElementById("keyInput").value.trim();
+  let msg = document.getElementById("msg");
+
+  if (key === "7429X") {
+    document.getElementById("task").style.display = "block";
+    msg.innerHTML = "ACCESS GRANTED";
+  } else {
+    msg.innerHTML = "ACCESS DENIED";
+  }
+}
+
+function checkAnswer() {
+  let ans = document.getElementById("answer").value.trim().toLowerCase();
+  let m = document.getElementById("answerMsg");
+
+  if (ans === "agrtm") {
+    m.innerHTML = `
+    ✅ ACCESS UNLOCKED<br><br>
+    🔑 Твой ключ:<br>
+    -.. . ...- -....- ..--- ----- ..--- ....- --..-- / 
+    ... .-.. . -.. ..- -.-- ..- -.-. .... ..--- -.- --- -.. / 
+    -. .- ...- - --- .-. --- -- / . - .- --. . / ...- / ..--- ----- ..--- / 
+    -.- .- -... .. -. . - . / --.. .- / .-. --- ..- - . .-. --- -- .-.-.-
+    `;
+  } else {
+    m.innerHTML = "❌ WRONG ANSWER";
+  }
+}
+</script>
+
+</body>
+</html>
+
